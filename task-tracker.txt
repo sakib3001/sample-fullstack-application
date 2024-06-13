@@ -1,0 +1,11 @@
+Step-01:- (Containerization)
+  - Frontend containerize and test 
+  - Understand the dependency for the Backend Like ( DB , Redis )
+  - Make the DB and Redis up and set the endpoint for backend in the sample.env .
+  - Write a simple Dockerfile for the Backend Service and then test.
+  - If the Backend service is up and running without any error log then
+    connect it with the Frontend service. 
+  - If the Whole app is working fine then optimize the Dockerfiles and the docker-compose.yml
+
+Issue and Fix During Step-01:-
+  - 
