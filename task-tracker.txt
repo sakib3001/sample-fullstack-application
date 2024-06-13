@@ -8,4 +8,5 @@ Step-01:- (Containerization)
   - If the Whole app is working fine then optimize the Dockerfiles and the docker-compose.yml
 
 Issue and Fix During Step-01:-
-  - 
+  - The prisma schema migration : this has been fixed via -> npx prisma migrate deploy --schema=./prisma/schema.prisma
+  - Issue with the connectivity -> http://localhost:8777 <-> http://backend:8777
