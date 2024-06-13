@@ -1,48 +1,6 @@
 version: '3.8'
 
 services:
-  frontend:
-    build:
-      context: ./frontend  
-      dockerfile: Dockerfile  
-    hostname: frontend
-    container_name: frontend
-    networks: 
-      - task-net
-    ports:
-      - "8080:3000"  
-    env_file:
-      - ./sample.env  
-
-  backend:
-    build:
-      context: ./backend  
-      dockerfile: Dockerfile  
-    container_name: backend
-    hostname: backend
-    networks: 
-      - task-net
-    ports:
-      - "8777:3000"  
-    env_file:
-      - ./sample.env  
-    depends_on:
-      - db
-      - redis
-
-  db:
-    image: postgres:14-alpine
-    hostname: db
-    container_name: db
-    networks: 
-      - task-net
-    ports:
-      - "5432:5432"  
-    environment:
-      - POSTGRES_USER=sakib
-      - POSTGRES_PASSWORD=1234
-      - POSTGRES_DB=todo  
-
   redis:
     image: redis:latest
     container_name: redis
@@ -50,10 +8,53 @@ services:
     networks:
       - task-net
     ports:
-      - '6379:6379'  
+      - '6379:6379'
+    restart: unless-stopped
+
+  db:
+    image: postgres:14-alpine
+    hostname: db
+    container_name: db
+    networks:
+      - task-net
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./sample.env
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    hostname: backend
+    networks:
+      - task-net
+    ports:
+      - "8777:3000"
+    env_file:
+      - ./sample.env
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    hostname: frontend
+    container_name: frontend
+    networks:
+      - task-net
+    ports:
+      - "8080:3000"
+    env_file:
+      - ./sample.env
+    restart: unless-stopped
 
 networks:
   task-net:
     external: true
     name: task-net
-
