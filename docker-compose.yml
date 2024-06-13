@@ -21,6 +21,8 @@ services:
       - "5432:5432"
     env_file:
       - ./sample.env
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
     restart: unless-stopped
 
   backend:
