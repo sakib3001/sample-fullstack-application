@@ -66,7 +66,6 @@ To access the todo app open your browser and type:
 ## Remarks
 
 - ##### Healthchecks for the `db` and the `redis` is not added to the compose file.
-- ##### In some cases, volume binding is crucial for data persistence. Here, I had used the `./pgdata` directory for data persistence. Alternatively, Docker volumes could be used, but for replication purposes, I prefer `volume binding`. For the ease of the project structure here Mow I 
-am using `pgdata1 docker volume.
+- ##### In some cases, volume binding is crucial for data persistence. Here, I had used the `./pgdata` directory for data persistence. Alternatively, Docker volumes could be used, but for replication purposes, I prefer `volume binding`. For the ease of the project structure here I am using `pgdata` docker volume right now.
 
 
