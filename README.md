@@ -27,7 +27,7 @@ POSTGRES_DB=todo
 - #### Clone the project
 
 ```bash
-  git clone -b my-task https://github.com/sakib3001/sample-fullstack-application.git
+  git clone -b main https://github.com/sakib3001/sample-fullstack-application.git
 
 ```
 
