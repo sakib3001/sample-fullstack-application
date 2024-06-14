@@ -22,7 +22,7 @@ services:
     env_file:
       - ./sample.env
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     restart: unless-stopped
 
   backend:
@@ -52,13 +52,16 @@ services:
     container_name: frontend
     networks:
       - task-net
-    ports:
-      - "8080:3000"
     env_file:
       - ./sample.env
+    ports:
+      - "8080:3000"
     restart: unless-stopped
 
 networks:
   task-net:
     external: true
     name: task-net
+
+volumes:
+  pgdata:
