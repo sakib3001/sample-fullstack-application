@@ -3,7 +3,7 @@ name: Build and Push Frontend
 on:
   push:
     branches:
-      - my-task  
+      - main  
 
 jobs:
   build-and-push-frontend:
